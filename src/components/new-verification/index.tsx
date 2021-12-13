@@ -8,7 +8,7 @@ import JSONPretty from 'react-json-pretty';
 import { useSnackbar } from 'notistack';
 
 const NEXT_PUBLIC_TRUSTDOCK_BASE_URL = process.env.NEXT_PUBLIC_TRUSTDOCK_BASE_URL || '';
-const NEXT_PUBLIC_TRUSTDOCK_TOKEN_API = process.env.NEXT_PUBLIC_TRUSTDOCK_BASE_URL || '';
+const NEXT_PUBLIC_TRUSTDOCK_TOKEN_API = process.env.NEXT_PUBLIC_TRUSTDOCK_TOKEN_API || '';
 
 type Props = {}
 
