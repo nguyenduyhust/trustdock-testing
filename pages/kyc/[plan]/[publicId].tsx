@@ -3,13 +3,13 @@ import { NextPage } from 'next'
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container'
 import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import Script from 'next/script';
 import { useRouter } from 'next/router';
 import { planOptions } from '../../../src/components/select-kyc';
 
-const TRUST_DOCK_JS_HELPER_URL = 'https://helper.test.trustdock.io/v2/verification_helper.js';
+const NEXT_PUBLIC_TRUST_DOCK_JS_HELPER_URL = process.env.NEXT_PUBLIC_TRUST_DOCK_JS_HELPER_URL || 'https://helper.test.trustdock.io/v2/verification_helper.js';
 
 const StartKYC: NextPage = () => {
   const router = useRouter();
@@ -28,7 +28,7 @@ const StartKYC: NextPage = () => {
         ],
         openerSelector: `#opener`
       });
-  
+
       // Function when an event is received
       trustdock.on('documentsubmitted', () => {
         console.log('TRUSTDOCK documentsubmitted');
@@ -50,33 +50,31 @@ const StartKYC: NextPage = () => {
   }, [plan, publicId, trustdockLoaded, isValid]);
 
   return (
-    <div>
+    <Container maxWidth="md">
       <Script
-        src={TRUST_DOCK_JS_HELPER_URL}
+        src={NEXT_PUBLIC_TRUST_DOCK_JS_HELPER_URL}
         onLoad={() => {
           setTrustdockLoaded(true);
         }}
       />
-      <Container style={{ paddingTop: 200 }}>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            {plan && (
-              <TextField select fullWidth variant="outlined" value={plan} disabled>
-                {planOptions.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
-              </TextField>
-            )} 
-          </Grid>
-          <Grid item xs={12}>
-            <TextField label="Public Id" variant="outlined" value={publicId} fullWidth disabled InputLabelProps={{ shrink: true }} />
-          </Grid>
-        </Grid>
-        <Button id="opener" className="opener" variant="contained" style={{ marginTop: 20 }} disabled={!trustdockLoaded}>Start KYC</Button>
-      </Container>
-    </div>
+      <Box marginTop={10}>
+        {plan && (
+          <TextField select fullWidth variant="outlined" value={plan} disabled>
+            {planOptions.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+        )}
+        <Box marginTop={1}>
+          <TextField label="Public Id" variant="outlined" value={publicId} fullWidth disabled InputLabelProps={{ shrink: true }} />
+        </Box>
+        <Box marginTop={1}>
+          <Button id="opener" className="opener" variant="contained" disabled={!trustdockLoaded}>Start KYC</Button>
+        </Box>
+      </Box>
+    </Container >
   )
 }
 
