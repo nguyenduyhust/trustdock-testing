@@ -8,7 +8,7 @@ import JSONPretty from 'react-json-pretty';
 import { useSnackbar } from 'notistack';
 
 const TRUSTDOCK_BASE_URL = process.env.TRUSTDOCK_BASE_URL || 'https://api.test.trustdock.io/v2';
-const TRUSTDOCK_TOKEN_API = process.env.TRUSTDOCK_BASE_URL || '37i38h8yDo3dPnhXruD8CPvE';
+const TRUSTDOCK_TOKEN_API = process.env.TRUSTDOCK_TOKEN_API || '37i38h8yDo3dPnhXruD8CPvE';
 
 type Props = {}
 
