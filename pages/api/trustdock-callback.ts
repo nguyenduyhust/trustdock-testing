@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import crypto from 'crypto';
 
-const WEBHOOK_SECRET_KEY = 'vJMXUbzMZMVcvvYsdE3aCGtP';
+const WEBHOOK_SECRET_KEY = process.env.WEBHOOK_SECRET_KEY || '';
 
 type TrustDockWebhookData = Array<{
   type: string;
