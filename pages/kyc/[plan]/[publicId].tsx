@@ -7,11 +7,11 @@ import Grid from '@mui/material/Grid';
 import MenuItem from '@mui/material/MenuItem';
 import Script from 'next/script';
 import { useRouter } from 'next/router';
-import { planOptions } from '../..';
+import { planOptions } from '../../../src/components/select-kyc';
 
 const TRUST_DOCK_JS_HELPER_URL = 'https://helper.test.trustdock.io/v2/verification_helper.js';
 
-const KYC: NextPage = () => {
+const StartKYC: NextPage = () => {
   const router = useRouter();
   const { plan, publicId } = router.query as { plan: string, publicId: string };
   const isValid = plan && publicId;
@@ -80,4 +80,4 @@ const KYC: NextPage = () => {
   )
 }
 
-export default KYC
+export default StartKYC
