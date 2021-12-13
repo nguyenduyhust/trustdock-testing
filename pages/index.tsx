@@ -19,10 +19,10 @@ const Home: NextPage = () => {
         <Box marginTop={2} marginBottom={2}>
           <Divider />
         </Box>
-        <ComparisionData />
+        {/* <ComparisionData />
         <Box marginTop={2} marginBottom={2}>
           <Divider />
-        </Box>
+        </Box> */}
         <SelectKYC />
       </Box>
     </Container>
