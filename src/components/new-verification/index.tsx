@@ -7,8 +7,8 @@ import axios from 'axios';
 import JSONPretty from 'react-json-pretty';
 import { useSnackbar } from 'notistack';
 
-const TRUSTDOCK_BASE_URL = process.env.TRUSTDOCK_BASE_URL || 'https://api.test.trustdock.io/v2';
-const TRUSTDOCK_TOKEN_API = process.env.TRUSTDOCK_BASE_URL || '37i38h8yDo3dPnhXruD8CPvE';
+const NEXT_PUBLIC_TRUSTDOCK_BASE_URL = process.env.NEXT_PUBLIC_TRUSTDOCK_BASE_URL || '';
+const NEXT_PUBLIC_TRUSTDOCK_TOKEN_API = process.env.NEXT_PUBLIC_TRUSTDOCK_BASE_URL || '';
 
 type Props = {}
 
@@ -20,10 +20,10 @@ const NewVerification = (props: Props) => {
     setCreateNewVerificationLoading(true);
     try {
       const result = await axios.post(
-        `${TRUSTDOCK_BASE_URL}/verifications`,
+        `${NEXT_PUBLIC_TRUSTDOCK_BASE_URL}/verifications`,
         undefined, {
         headers: {
-          Authorization: `Bearer ${TRUSTDOCK_TOKEN_API}`
+          Authorization: `Bearer ${NEXT_PUBLIC_TRUSTDOCK_TOKEN_API}`
         }
       });
       setCreateNewVerificationData(result.data);

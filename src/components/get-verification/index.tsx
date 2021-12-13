@@ -7,8 +7,8 @@ import axios from 'axios';
 import JSONPretty from 'react-json-pretty';
 import { useSnackbar } from 'notistack';
 
-const TRUSTDOCK_BASE_URL = process.env.TRUSTDOCK_BASE_URL || 'https://api.test.trustdock.io/v2';
-const TRUSTDOCK_TOKEN_API = process.env.TRUSTDOCK_TOKEN_API || '37i38h8yDo3dPnhXruD8CPvE';
+const NEXT_PUBLIC_TRUSTDOCK_BASE_URL = process.env.NEXT_PUBLIC_TRUSTDOCK_BASE_URL || '';
+const NEXT_PUBLIC_TRUSTDOCK_TOKEN_API = process.env.NEXT_PUBLIC_TRUSTDOCK_TOKEN_API || '';
 
 type Props = {}
 
@@ -24,9 +24,9 @@ const GetVerification = (props: Props) => {
     setGetVerificationLoading(true);
     try {
       const result = await axios.get(
-        `${TRUSTDOCK_BASE_URL}/verifications/${verificationId}`, {
+        `${NEXT_PUBLIC_TRUSTDOCK_BASE_URL}/verifications/${verificationId}`, {
         headers: {
-          Authorization: `Bearer ${TRUSTDOCK_TOKEN_API}`
+          Authorization: `Bearer ${NEXT_PUBLIC_TRUSTDOCK_TOKEN_API}`
         }
       });
       setGetVerificationData(result.data);

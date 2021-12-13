@@ -6,8 +6,8 @@ import TextField from '@mui/material/TextField';
 import axios from 'axios';
 import { useSnackbar } from 'notistack';
 
-const TRUSTDOCK_BASE_URL = process.env.TRUSTDOCK_BASE_URL || 'https://api.test.trustdock.io/v2';
-const TRUSTDOCK_TOKEN_API = process.env.TRUSTDOCK_BASE_URL || '37i38h8yDo3dPnhXruD8CPvE';
+const NEXT_PUBLIC_TRUSTDOCK_BASE_URL = process.env.NEXT_PUBLIC_TRUSTDOCK_BASE_URL || '';
+const NEXT_PUBLIC_TRUSTDOCK_TOKEN_API = process.env.NEXT_PUBLIC_TRUSTDOCK_TOKEN_API || '';
 
 type Props = {}
 
@@ -37,11 +37,11 @@ const ComparisionData = (props: Props) => {
     setCompareDataLoading(true);
     try {
       await axios.put(
-        `${TRUSTDOCK_BASE_URL}/verifications/${verificationId}`,
+        `${NEXT_PUBLIC_TRUSTDOCK_BASE_URL}/verifications/${verificationId}/comparing_data`,
         JSON.parse(body),
         {
           headers: {
-            Authorization: `Bearer ${TRUSTDOCK_TOKEN_API}`
+            Authorization: `Bearer ${NEXT_PUBLIC_TRUSTDOCK_TOKEN_API}`
           }
         }
       );
